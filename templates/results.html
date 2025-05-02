@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TF-IDF Results</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        background: #5F9EA0;
+    }
+
+    .tables {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    table {
+        text-align: center;
+        border: solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: solid black;
+        padding: 8px;
+    }
+</style>
+<body>
+<h1>Documents analyzed successfully!</h1>
+<div class="tables">
+    {% for doc in documents %}
+        <table>
+            <caption><h2>{{ doc.name }}</h2></caption>
+            <thead>
+            <tr>
+                <th>Word</th>
+                <th>TF</th>
+                <th>IDF</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for token in doc.tokens %}
+                <tr>
+                    <td>{{ token.word }}</td>
+                    <td>{{ token.tf }}</td>
+                    <td>{{ token.idf }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</div>
+</body>
+</html>
